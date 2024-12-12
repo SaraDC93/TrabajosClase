@@ -1,10 +1,16 @@
---nombre de la BBDD con las iniciales
 CREATE DATABASE SDC_books;
+
 USE SDC_books;
 
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    published_year INT NOT NULL,
+    genre VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-
---Se crea el usuario con nombre usuSDC y contraseña Tareas con los privilegios necesarios
 CREATE USER 'usuSDC' IDENTIFIED BY 'Tareas';
 GRANT ALL PRIVILEGES ON `SDC_books`.* TO 'usuSDC';
 FLUSH PRIVILEGES;

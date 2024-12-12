@@ -1,0 +1,44 @@
+# Obtener todos los libros php -S localhost:8000
+GET http://localhost:8000/
+
+
+
+###
+
+# Crear un nuevo libro
+POST http://localhost:8000/
+Content-Type: application/json
+
+{
+  "title": "Viento y verdad",
+ 
+}
+
+###
+POST http://localhost:8000/
+Content-Type: application/json
+
+{
+  "title": "Viento y verdad",
+  
+}
+###
+
+# Marcar un libro como leido
+PUT http://localhost:8000/
+Content-Type: application/json
+
+{
+  "id": 4,
+  "created_at": 1
+}
+
+###
+
+# Eliminar un libro
+DELETE http://localhost:8000/
+Content-Type: application/json
+
+{
+  "id": 5
+}
