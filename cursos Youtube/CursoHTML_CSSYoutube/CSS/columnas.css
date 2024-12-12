@@ -1,0 +1,19 @@
+nav{
+    background-color: aquamarine;
+    padding: 20px;
+    text-align: right;
+}
+
+.columna {
+    background-color: blanchedalmond;
+    color:black;
+    text-align: center;
+    padding: 20px;
+    width: 25%;    
+    margin: 10px;
+}
+
+.padre {
+    display: flex;
+    
+}

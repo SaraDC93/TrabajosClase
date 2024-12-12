@@ -1,0 +1,56 @@
+### 1. Prueba con JSON correcto (productos válidos)
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json
+
+[
+    {"id": 1, "nombre": "Laptop", "cantidad": 10, "precio": 1200},
+    {"id": 2, "nombre": "Mouse", "cantidad": 3, "precio": 25},
+    {"id": 3, "nombre": "Teclado", "cantidad": 1, "precio": 45}
+]
+
+###
+
+### 2. Prueba con un producto sin el campo 'precio'
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json
+
+[
+    {"id": 1, "nombre": "Laptop", "cantidad": 10, "precio": 1200},
+    {"id": 2, "nombre": "Mouse", "cantidad": 3}
+]
+
+###
+
+### 3. Prueba con un producto con valores no numéricos en 'cantidad' o 'precio'
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json
+
+[
+    {"id": 1, "nombre": "Laptop", "cantidad": "diez", "precio": 1200},
+    {"id": 2, "nombre": "Mouse", "cantidad": 3, "precio": "veinticinco"}
+]
+
+###
+
+### 4. Prueba con JSON mal formateado
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json
+
+[
+    {"id": 1, "nombre": "Laptop", "cantidad": 10, "precio": 1200},
+    {"id": 2, "nombre": "Mouse", "cantidad": 3, "precio": 25
+]
+
+###
+
+### 5. Prueba con JSON vacío
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json
+
+[]
+
+###
+
+### 6. Prueba con cuerpo vacío
+POST http://localhost:8000/gestion_inventario.php
+Content-Type: application/json

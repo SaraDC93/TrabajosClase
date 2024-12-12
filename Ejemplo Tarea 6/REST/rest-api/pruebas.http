@@ -1,0 +1,35 @@
+##Consultar todos los usuarios
+GET http://localhost:8000/
+##Insertar un usuario
+
+###
+
+# POST - Crear un usuario
+POST http://localhost:8000
+Content-Type: application/json
+
+{
+  "name": "Alice Smith",
+  "email": "alice.smith@example.com"
+}
+
+###
+
+# POST - Crear otro usuario
+POST http://localhost:8000
+Content-Type: application/json
+
+{
+  "name": "Bob Johnson",
+  "email": "bob.johnson@example.com"
+}
+
+###
+
+# DELETE - Eliminar un usuario (ID 1)
+DELETE http://localhost:8000
+Content-Type: application/json
+
+{
+  "id": 1
+}

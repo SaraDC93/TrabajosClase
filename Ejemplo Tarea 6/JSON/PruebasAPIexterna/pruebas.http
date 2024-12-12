@@ -1,0 +1,6 @@
+### ir a github a buscar un usuario
+
+GET https://api.github.com/users/isabelmorenom
+
+### url de openweather
+GET https://api.openweathermap.org/data/2.5/weather?lat=$&lon=${lon}&appid=${weatherApiKey}&units=metric&lang=es

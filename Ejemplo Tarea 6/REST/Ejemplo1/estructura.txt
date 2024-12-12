@@ -1,0 +1,37 @@
+/rest_api
+  ├── index.php
+  ├── db.php
+  └── .htaccess
+
+Probar el Servicio Web
+Usar Postman para Realizar Solicitudes
+
+Probar Endpoints:
+
+GET /tasks:
+URL: http://localhost/rest_api/tasks
+Método: GET.
+POST /tasks:
+URL: http://localhost/rest_api/tasks
+Método: POST.
+Body (JSON):
+
+{
+    "title": "Aprender REST",
+    "description": "Revisar fundamentos de servicios web"
+}
+
+PUT /tasks/{id}:
+URL: http://localhost/rest_api/tasks/1
+Método: PUT.
+Body (JSON):
+
+{
+    "title": "Aprender PHP REST",
+    "description": "Actualizar fundamentos de RESTful APIs"
+}
+
+DELETE /tasks/{id}:
+URL: http://localhost/rest_api/tasks/1
+Método: DELETE.
+

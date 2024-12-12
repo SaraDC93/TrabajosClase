@@ -1,0 +1,29 @@
+
+#insertando datos
+#para pruebas mejor arrancar un servidor en el puerto 8000
+#desde consola situarse en el root y arrancar con php -S localhost:8000
+
+POST http://127.0.0.1:8000/PHPTeoria/UD6/REST/Ejemplo1/tasks
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "Isabel de nuevo",
+    "description": "Revisar fundamentos de servicios web"
+}
+
+#consultando datos
+GET http://127.0.0.1:8000/PHPTeoria/UD6/REST/Ejemplo1/tasks   
+
+#modificando un dato con id:4
+PUT http://127.0.0.1:8000/PHPTeoria/UD6/REST/Ejemplo1/tasks/4
+Content-Type: application/json
+
+{
+    "title": "Modificando la 4",
+    "description": "Isabel de nuevo probando"
+}
+
+#borrar tarea
+
+DELETE  http://127.0.0.1:8000/PHPTeoria/UD6/REST/Ejemplo1/tasks/1

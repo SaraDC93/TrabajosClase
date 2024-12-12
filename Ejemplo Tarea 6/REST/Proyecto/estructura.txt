@@ -1,0 +1,13 @@
+project/
+├── api/               # Back-end (servicio RESTful)
+│   ├── index.php      # Punto de entrada de la API
+│   ├── db.php         # Configuración PDO
+│   ├── tasks/         # Controladores para las tareas (RESTful)
+│       ├── create.php
+│       ├── read.php
+│       ├── delete.php
+│       ├── update.php (opcional)
+├── public/            # Front-end PHP actuando como cliente
+│   ├── index.php      # Página principal (consume la API)
+├── sql/               # Scripts de la base de datos
+│   ├── init.sql

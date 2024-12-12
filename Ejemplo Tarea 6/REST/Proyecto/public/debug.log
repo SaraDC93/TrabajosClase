@@ -1,0 +1,32 @@
+Array
+(
+    [DOCUMENT_ROOT] => /home/isabel
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 44830
+    [SERVER_SOFTWARE] => PHP 8.1.2-1ubuntu2.19 Development Server
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [SERVER_NAME] => 127.0.0.1
+    [SERVER_PORT] => 3000
+    [REQUEST_URI] => /PHPTeoria/UD6/REST/Proyecto/public/index.php
+    [REQUEST_METHOD] => GET
+    [SCRIPT_NAME] => /PHPTeoria/UD6/REST/Proyecto/public/index.php
+    [SCRIPT_FILENAME] => /home/isabel/PHPTeoria/UD6/REST/Proyecto/public/index.php
+    [PHP_SELF] => /PHPTeoria/UD6/REST/Proyecto/public/index.php
+    [HTTP_HOST] => 127.0.0.1:3000
+    [HTTP_CONNECTION] => keep-alive
+    [HTTP_SEC_CH_UA] => "Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"
+    [HTTP_SEC_CH_UA_MOBILE] => ?0
+    [HTTP_SEC_CH_UA_PLATFORM] => "Linux"
+    [HTTP_UPGRADE_INSECURE_REQUESTS] => 1
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    [HTTP_SEC_FETCH_SITE] => none
+    [HTTP_SEC_FETCH_MODE] => navigate
+    [HTTP_SEC_FETCH_USER] => ?1
+    [HTTP_SEC_FETCH_DEST] => document
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, br, zstd
+    [HTTP_ACCEPT_LANGUAGE] => en-GB,en-US;q=0.9,en;q=0.8,es;q=0.7
+    [HTTP_COOKIE] => idioma_preferido=en; nombre_usuario=juan; tema_preferido=claro; visitas=1; PHPSESSID=p8q1t37ap467jg6l0jeieq9ft8
+    [REQUEST_TIME_FLOAT] => 1732322349.9878
+    [REQUEST_TIME] => 1732322349
+)
