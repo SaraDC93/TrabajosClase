@@ -54,7 +54,8 @@ class Book {
         $stmt->bindParam(4, $this->genre);
         $stmt->bindParam(5, $this->id);
 
-        if ($stmt->execute()) {
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
