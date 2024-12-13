@@ -15,7 +15,7 @@ include_once 'Book.php';
 
 // Creo una instancia de la clase Database y obtengo la conexión a la bbdd
 $database = new Database();
-$db = $database->getConnection();
+$db = $database->getConnection(); 
 
 //Creo una instancia de la clase Book para manejar las operaciones relacionadas con los libros
 $book = new Book($db);
