@@ -32,7 +32,6 @@ class Book {
         $stmt->bindParam(3, $this->published_year);
         $stmt->bindParam(4, $this->genre);
 
-
         if ($stmt->execute()) {
             return true;
         }
@@ -41,11 +40,14 @@ class Book {
 
     // Actualizar un libro
     public function update() {
-        $query = "UPDATE " . $this->table . " SET created_at = ? WHERE id = ?";
+        $query = "UPDATE " . $this->table . " SET title = ?, author = ?, published_year = ?, genre = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bindParam(1, $this->created_at);
-        $stmt->bindParam(2, $this->id);
+        $stmt->bindParam(1, $this->title);
+        $stmt->bindParam(2, $this->author);
+        $stmt->bindParam(3, $this->published_year);
+        $stmt->bindParam(4, $this->genre);
+        $stmt->bindParam(5, $this->id);
 
         if ($stmt->execute()) {
             return true;

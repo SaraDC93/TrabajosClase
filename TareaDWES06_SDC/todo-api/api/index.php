@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -31,8 +30,8 @@ if ($method == 'GET') {
     $data = json_decode(file_get_contents("php://input"));
     $book->title = $data->title;
     $book->author = $data->author;
-    $book->published_year = 0;
-   
+    $book->published_year = $data->published_year;
+    $book->genre = $data->genre;
 
     if ($book->create()) {
         echo json_encode(["message" => "Libro agregado exitosamente."]);
@@ -42,10 +41,11 @@ if ($method == 'GET') {
 } elseif ($method == 'PUT') {
     $data = json_decode(file_get_contents("php://input"));
     $book->id = $data->id;
-    $book->created_at = $data->created_at;
-    
-    
-    
+    $book->title = $data->title;
+    $book->author = $data->author;
+    $book->published_year = $data->published_year;
+    $book->genre = $data->genre;
+
     if ($book->update()) {
         echo json_encode(["message" => "Libro actualizado exitosamente."]);
     } else {

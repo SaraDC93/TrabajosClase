@@ -1,7 +1,6 @@
-# Obtener todos los libros php -S localhost:8000
+#php -S localhost:8000
+# Obtener todos los libros
 GET http://localhost:8000/
-
-
 
 ###
 
@@ -11,26 +10,33 @@ Content-Type: application/json
 
 {
   "title": "Viento y verdad",
- 
+  "author": "Brandon Sanderson",
+  "published_year": 2024,
+  "genre": "Fantasía"
 }
 
 ###
+
+# Crear un libro con datos incompletos (falta 'author')
 POST http://localhost:8000/
 Content-Type: application/json
 
 {
-  "title": "Viento y verdad",
-  
+  "title": "El camino de los reyes"
 }
+
 ###
 
-# Marcar un libro como leido
+# Marcar un libro como leído (Actualizar un libro)
 PUT http://localhost:8000/
 Content-Type: application/json
 
 {
-  "id": 4,
-  "created_at": 1
+  "id": 1,
+  "title": "Viento y verdad",
+  "author": "Brandon Sanderson",
+  "published_year": 2024,
+  "genre": "Fantasía"
 }
 
 ###
@@ -40,5 +46,5 @@ DELETE http://localhost:8000/
 Content-Type: application/json
 
 {
-  "id": 5
+  "id": 1
 }
