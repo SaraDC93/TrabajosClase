@@ -1,4 +1,4 @@
-#php -S localhost:8000
+###php -S localhost:8000
 # Obtener todos los libros
 GET http://localhost:8000/
 
@@ -15,9 +15,21 @@ Content-Type: application/json
   "genre": "Fantasía"
 }
 
+### Crear un nuevo libro
+POST http://localhost:8000/
+Content-Type: application/json
+
+{
+  "title": "Palabras Radiantes",
+  "author": "Brandon Sanderson",
+  "published_year": 2021,
+  "genre": "Fantasia"
+}
+
+
 ###
 
-# Crear un libro con datos incompletos (falta 'author')
+# Crear un libro con datos incompletos
 POST http://localhost:8000/
 Content-Type: application/json
 
@@ -27,16 +39,16 @@ Content-Type: application/json
 
 ###
 
-# Marcar un libro como leído (Actualizar un libro)
+# Editar un libro
 PUT http://localhost:8000/
 Content-Type: application/json
 
 {
-  "id": 1,
-  "title": "Viento y verdad",
+  "id": 5,
+  "title": "Viento",
   "author": "Brandon Sanderson",
   "published_year": 2024,
-  "genre": "Fantasía"
+  "genre": "Fantasia"
 }
 
 ###
@@ -46,5 +58,5 @@ DELETE http://localhost:8000/
 Content-Type: application/json
 
 {
-  "id": 1
+  "id": 2
 }
