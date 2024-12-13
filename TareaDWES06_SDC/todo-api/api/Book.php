@@ -26,18 +26,21 @@ class Book {
 
     // Método para crear un libro
     public function create() {
-        $query = "INSERT INTO " . $this->table . " SET title=?, author=?, published_year=?, genre=?";
-        $stmt = $this->conn->prepare($query);
-
-        $stmt->bindParam(1, $this->title);
-        $stmt->bindParam(2, $this->author);
-        $stmt->bindParam(3, $this->published_year);
-        $stmt->bindParam(4, $this->genre);
-
-        if ($stmt->execute()) {
+        try{
+            $query = "INSERT INTO " . $this->table . " SET title=?, author=?, published_year=?, genre=?";
+            $stmt = $this->conn->prepare($query);
+    
+            $stmt->bindParam(1, $this->title);
+            $stmt->bindParam(2, $this->author);
+            $stmt->bindParam(3, $this->published_year);
+            $stmt->bindParam(4, $this->genre);
+    
+            $stmt->execute();
             return true;
+        }catch(PDOException $e)
+        {
+            return false;
         }
-        return false;
     }
 
     // Método para actualizar un libro
@@ -63,7 +66,8 @@ class Book {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
 
-        if ($stmt->execute()) {
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
