@@ -24,7 +24,7 @@ class Book {
 
     // Crear un libro
     public function create() {
-        $query = "INSERT INTO " . $this->table . " SET title=?, author=?,published_year=?, genre=?";
+        $query = "INSERT INTO " . $this->table . " SET title=?, author=?, published_year=?, genre=?";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(1, $this->title);

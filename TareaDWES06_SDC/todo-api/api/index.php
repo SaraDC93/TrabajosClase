@@ -56,7 +56,7 @@ if ($method == 'GET') {
     $book->id = $data->id;
 
     if ($book->delete()) {
-        echo json_encode(["message" => "Libro eliminada exitosamente."]);
+        echo json_encode(["message" => "Libro eliminado exitosamente."]);
     } else {
         echo json_encode(["message" => "Error al eliminar el libro."]);
     }
