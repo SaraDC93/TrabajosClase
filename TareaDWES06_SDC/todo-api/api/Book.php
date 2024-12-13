@@ -47,19 +47,20 @@ class Book {
     public function update() {
         $query = "UPDATE " . $this->table . " SET title = ?, author = ?, published_year = ?, genre = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-
+    
         $stmt->bindParam(1, $this->title);
         $stmt->bindParam(2, $this->author);
         $stmt->bindParam(3, $this->published_year);
         $stmt->bindParam(4, $this->genre);
         $stmt->bindParam(5, $this->id);
-
-        if ($stmt->execute()) {
+    
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
     }
-
+    
     // Método para eliminar un libro
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id = ?";
