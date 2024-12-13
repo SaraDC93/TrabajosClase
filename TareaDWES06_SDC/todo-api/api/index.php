@@ -32,15 +32,19 @@ if ($method == 'GET') {
     echo json_encode($books);  // Devolver los libros como una respuesta JSON
 } elseif ($method == 'POST') {
     $data = json_decode(file_get_contents("php://input"));  // Creamos un nuevo libro
-    $book->title = $data->title;
-    $book->author = $data->author;
-    $book->published_year = $data->published_year;
-    $book->genre = $data->genre;
-
-    if ($book->create()) {  // Intentamos crear el libro y devolvemos el mensaje correspondiente
-        echo json_encode(["message" => "Libro agregado exitosamente."]);
-    } else {
-        echo json_encode(["message" => "Error al agregar el libro."]);
+    if(isset($data->title, $data->author, $data->published_year, $data->genre)){
+        $book->title = $data->title;
+        $book->author = $data->author;
+        $book->published_year = $data->published_year;
+        $book->genre = $data->genre;
+    
+        if ($book->create()) {  // Intentamos crear el libro y devolvemos el mensaje correspondiente
+            echo json_encode(["message" => "Libro agregado exitosamente."]);
+        } else {
+            echo json_encode(["message" => "Error al agregar el libro."]);
+        }
+    }else{
+        echo json_encode(["ERROR" => "Datos incompletos"]);
     }
 } elseif ($method == 'PUT') {
     $data = json_decode(file_get_contents("php://input")); // Actualizamos un libro existente
