@@ -1,8 +1,9 @@
 <?php
 class Book {
-    private $conn;
-    private $table = "books";
+    private $conn; // Conexión a la bbdd
+    private $table = "books"; // Nombre de la tabla en la bbdd
 
+    //atributos
     public $id;
     public $title;
     public $author;
@@ -10,11 +11,12 @@ class Book {
     public $genre;
     public $created_at;
 
+    // Constructor que recibe la conexión de la bbdd
     public function __construct($db) {
         $this->conn = $db;
     }
 
-    // Leer todos los libros
+    // Método para leer todos los libros
     public function read() {
         $query = "SELECT * FROM " . $this->table;
         $stmt = $this->conn->prepare($query);
@@ -22,7 +24,7 @@ class Book {
         return $stmt;
     }
 
-    // Crear un libro
+    // Método para crear un libro
     public function create() {
         $query = "INSERT INTO " . $this->table . " SET title=?, author=?, published_year=?, genre=?";
         $stmt = $this->conn->prepare($query);
@@ -38,7 +40,7 @@ class Book {
         return false;
     }
 
-    // Actualizar un libro
+    // Método para actualizar un libro
     public function update() {
         $query = "UPDATE " . $this->table . " SET title = ?, author = ?, published_year = ?, genre = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
@@ -55,7 +57,7 @@ class Book {
         return false;
     }
 
-    // Eliminar un libro
+    // Método para eliminar un libro
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
