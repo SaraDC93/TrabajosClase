@@ -12,6 +12,7 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once 'Database.php';
 include_once 'Book.php';
 
+
 // Creo una instancia de la clase Database y obtengo la conexión a la bbdd
 $database = new Database();
 $db = $database->getConnection();
