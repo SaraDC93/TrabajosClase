@@ -1,5 +1,5 @@
-//calcular el doble de un numero
-// Definimos la función
+//Calcular el doble de un numero
+//Definimos la función
 function calcularDoble(numero) {
     // Calculamos el doble del número
     let doble = numero * 2;
