@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación de Usuario</title>
+    <link rel="stylesheet" href="style.css"> <!-- Opcional -->
+</head>
+<body>
+
+<h1>Registro</h1>
+    <form id="registerForm">
+        <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="registerPassword" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+    </form>
+
+<h1>Inicio de Sesión</h1>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+<script>
+ // Función para registrar un nuevo usuario
+    async function registerUser(email, password) {
+    try {
+        const response = await fetch('http://localhost:8000/api/register.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            // Si la respuesta no es exitosa, se muestra el mensaje de error
+            throw new Error(data.message || 'Error desconocido');
+        }
+
+        alert(data.message); // Muestra el mensaje de éxito
+        console.log(data); // Para depuración
+    } catch (error) {
+        alert('Error en el registro: ' + error.message); // Mejor manejo de error
+    }
+}
+
+    // Función para iniciar sesión
+    async function loginUser(email, password) {
+    try {
+        const response = await fetch('http://localhost:8000/api/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            // Si la respuesta no es exitosa, se muestra el mensaje de error
+            throw new Error(data.message || 'Error desconocido');
+        }
+
+        if (data.success) {
+            alert('Inicio de sesión exitoso');
+            console.log(data); // Datos de usuario o token
+        } else {
+            alert('Error: ' + data.message); // Mostrar mensaje de error
+        }
+    } catch (error) {
+        alert('Error al iniciar sesión: ' + error.message); // Mejor manejo de error
+    }
+}
+
+    // Manejo del formulario de registro
+    const registerForm = document.getElementById('registerForm');
+    registerForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        console.log("Registro:", email, password); // Para depuración
+        registerUser(email, password);
+    });
+
+    // Manejo del formulario de inicio de sesión
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita el envío del formulario por defecto
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        console.log("Inicio de Sesión:", email, password); // Para depuración
+        loginUser(email, password);
+    });
+</script>
+</body>
+</html>
