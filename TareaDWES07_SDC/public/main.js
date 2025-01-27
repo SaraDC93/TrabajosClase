@@ -102,21 +102,22 @@ async function loadbooks() {
         li.innerHTML = `
             <strong>${book.title}</strong> - ${book.author} - ${book.due_date} 
             [${book.status}]
-                <div id = "radio_${book.id}">
+            <div id="radio_${book.id}">
                 <input type="radio" id="r1${book.id}" name="book_status${book.id}" value="Pendiente">
                 <label for="Pendiente">Pendiente</label>
                 <input type="radio" id="r2${book.id}" name="book_status${book.id}" value="Leyendo">
                 <label for="Leyendo">Leyendo</label>
                 <input type="radio" id="r3${book.id}" name="book_status${book.id}" value="Finalizado">
                 <label for="Finalizado">Finalizado</label>
-                </div>
-                <button onclick="updatebook(${book.id})">Cambiar</button>
-                <button onclick="deletebook(${book.id})">Eliminar</button>
+            </div>
+            <button onclick="updatebook(${book.id})">Cambiar</button>
+            <button onclick="deleteBook(${book.id})">Eliminar</button>
         `;
         booksContainer.appendChild(li);
     });
+    
 }
-// ${book.status === 'Leyendo' ? 'checked="checked"' : ''} EJEMPLO arriba
+
 // Actualizar Estado de un libro
 async function updatebook(id) {
     var radio_buttons = document.getElementsByName('book_status'.concat(id));
@@ -137,9 +138,12 @@ async function updatebook(id) {
     loadbooks(); // Recargar las libros
 }
 
-
-// Eliminar un Libro
 async function deleteBook(id) {
+    if (!id) {
+        alert("ID del libro no proporcionado");
+        return;
+    }
+
     const response = await fetch(apiUrl + 'books.php', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -148,7 +152,8 @@ async function deleteBook(id) {
 
     const result = await response.json();
     alert(result.message || result.error);
-    loadBooks(); // Recargar los libros
+    
+    loadbooks(); // Recargar los libros
 }
 
 // Alternar entre las secciones de autenticación y libros
@@ -164,3 +169,4 @@ function toggleSections(isLoggedIn) {
 
 // Inicialización
 toggleSections(false); // Mostrar sección de autenticación al cargar la página
+window.deleteBook = deleteBook;

@@ -41,12 +41,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $data = json_decode(file_get_contents("php://input"), true);
-    $id = $data['id'];
+    $id = $data['id'] ?? null;  // Aquí aseguramos que el ID llegue correctamente
 
-    $sql = "DELETE FROM books WHERE id = ? AND user_id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$id, $user_id]);
-    echo json_encode(["message" => "Libro eliminada"]);
+    if (!$id) {
+        echo json_encode(["error" => "ID del libro no proporcionado"]);
+        exit;
+    }
+
+    $stmt = $pdo->prepare("DELETE FROM books WHERE id = ? AND user_id = ?");
+    try {
+        $stmt->execute([$id, $user_id]);
+        if ($stmt->rowCount() > 0) {
+            echo json_encode(["message" => "Libro eliminado correctamente"]);
+        } else {
+            echo json_encode(["error" => "No se pudo eliminar el libro"]);
+        }
+    } catch (Exception $e) {
+        echo json_encode(["error" => "Error al eliminar el libro: " . $e->getMessage()]);
+    }
 }
 
 ?>
