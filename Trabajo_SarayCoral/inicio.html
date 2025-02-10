@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Si tienes un archivo de estilo -->
+</head>
+<body>
+
+    <div id="auth-error" style="display:none; color: red;">
+        <p>Acceso denegado. Debes iniciar sesión para acceder a esta página.</p>
+    </div>
+
+    <div id="dashboard-content">
+        <h1>Bienvenido a la página de inicio</h1>
+
+        <div id="user-info">
+            <p><strong>Nombre:</strong> <span id="user-name"></span></p>
+        </div>
+
+        <!-- Aquí puedes agregar más contenido específico del dashboard -->
+        <button onclick="logout()">Cerrar sesión</button>
+    </div>
+
+    <script>
+        // Función para verificar si el usuario está autenticado
+        document.addEventListener("DOMContentLoaded", () => {
+            const token = localStorage.getItem("token");
+            const role = localStorage.getItem("role");
+
+            // Si no hay token, redirigimos al usuario a la página de login
+            if (!token) {
+                window.location.href = "index.html"; // Redirige a la página de login si no está autenticado
+            } else {
+                // Si hay token, mostramos los detalles del usuario
+                document.getElementById("dashboard-content").style.display = "block";
+                document.getElementById("user-name").textContent = localStorage.getItem("username") || "Usuario no disponible";
+                document.getElementById("user-role").textContent = role;
+
+                // Aquí puedes hacer más cosas como cargar datos de usuario desde la API
+                console.log("Usuario autenticado, mostrando contenido del dashboard");
+            }
+        });
+
+        // Función para cerrar sesión
+        function logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("role");
+            localStorage.removeItem("username"); // Si guardas el nombre de usuario también
+            window.location.href = "index.html"; // Redirige al login
+        }
+    </script>
+
+</body>
+</html>
